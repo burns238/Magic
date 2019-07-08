@@ -7,10 +7,10 @@ import datetime
 class slack_bot:
 
 	def __init__(self, channel_id, bot_name, bot_icon, live=True):
-		self.hook_url = os.environ['SLACK_HOOK']
-		self.channel = Channel(os.environ['SLACK_TOKEN'], channel_id)
+		self.token = os.environ['SLACK_TOKEN']
 		self.default_message = {
-		'channel': self.channel.getChannelName(),
+		'token': self.token,
+		'channel': channel_id,
 		'username': bot_name,
 		'icon_url': bot_icon,
 		'link_names':'1'
@@ -67,7 +67,7 @@ class slack_bot:
 
 	def _send_or_simulate(self, payload, simulate_text):
 		if self.live:
-			self.session.post(self.hook_url, data=payload)
+			self.session.post("https://slack.com/api/chat.postMessage", data=payload)
 		else:
 			write_to_log(simulate_text)
 
