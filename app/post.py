@@ -21,8 +21,7 @@ class slack_bot:
 	def post_message(self, message_text):
 		message = self.default_message.copy()
 		message['text'] = message_text
-		payload = {'payload':json.dumps(message)}
-		self._send_or_simulate(payload, 'simulating post of message: {!s}'.format(message_text))
+		self._send_or_simulate(message, 'simulating post of message: {!s}'.format(message_text))
 
 	def post_images(self, image_urls_array, pretext="", fallback="Couldn't display image"):
 		if len(image_urls_array) == 0:
@@ -46,8 +45,7 @@ class slack_bot:
 			message['attachments'].append(attachment)
 			attachment_count += 1
 		message['attachments'] = [attachment]
-		payload = {'payload':json.dumps(message)}
-		self._send_or_simulate(payload, 'simulating post of images: {!s}'.format(str(image_urls_array)))
+		self._send_or_simulate(message, 'simulating post of images: {!s}'.format(str(image_urls_array)))
 
 	def post_multiline_message(self, message_text):
 		message = self.default_message.copy()
@@ -55,15 +53,13 @@ class slack_bot:
 		'text': message_text
 		}
 		message['attachments'] = [attachment]
-		payload = {'payload':json.dumps(message)}
-		self._send_or_simulate(payload, 'simulating post of multi-line message: {!s}'.format(message_text))
+		self._send_or_simulate(message, 'simulating post of multi-line message: {!s}'.format(message_text))
 
 	def post_attachment(self, attachment):
 		message = self.default_message.copy()
 		attachment = attachment
 		message['attachments'] = [attachment]
-		payload = {'payload':json.dumps(message)}
-		self._send_or_simulate(payload, 'simulating post of multi-line message')
+		self._send_or_simulate(message, 'simulating post of multi-line message')
 
 	def _send_or_simulate(self, payload, simulate_text):
 		if self.live:
