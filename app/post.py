@@ -65,7 +65,7 @@ class slack_bot:
 		if self.live:
 			print(payload)
 			response = self.session.post("https://slack.com/api/chat.postMessage", data=payload)
-			print(response)
+			print(response.json())
 		else:
 			write_to_log(simulate_text)
 
