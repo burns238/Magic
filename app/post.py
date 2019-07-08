@@ -63,7 +63,8 @@ class slack_bot:
 
 	def _send_or_simulate(self, payload, simulate_text):
 		if self.live:
-			self.session.post("https://slack.com/api/chat.postMessage", data=payload)
+			response = self.session.post("https://slack.com/api/chat.postMessage", data=payload)
+			print(response)
 		else:
 			write_to_log(simulate_text)
 
