@@ -13,7 +13,7 @@ class slack_bot:
 		'channel': channel_id,
 		'username': bot_name,
 		'icon_url': bot_icon,
-		'link_names':'1'
+		'link_names':"1"
 		}
 		self.live = live
 		self.session = requests.session()
@@ -64,7 +64,7 @@ class slack_bot:
 	def _send_or_simulate(self, payload, simulate_text):
 		if self.live:
 			print(payload)
-			response = self.session.post("https://slack.com/api/chat.postMessage", params=payload)
+			response = self.session.post("https://slack.com/api/chat.postMessage", params=json.dumps(payload))
 			print(response.json())
 		else:
 			write_to_log(simulate_text)
