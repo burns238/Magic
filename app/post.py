@@ -1,3 +1,4 @@
+from app.slackApiChannel import Channel
 import requests
 import json
 import os
