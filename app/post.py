@@ -13,7 +13,8 @@ class slack_bot:
 		'channel': channel_id,
 		'username': bot_name,
 		'icon_url': bot_icon,
-		'link_names':'1'
+		'link_names':'1',
+		'text':''
 		}
 		self.live = live
 		self.session = requests.session()
