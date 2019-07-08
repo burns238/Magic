@@ -210,7 +210,8 @@ def slackPairings(normalPairings,twoHeadedPairings, remainder):
 				attachment = {
 						'text': message,
         		    	'color': "#7CD197",
-        		    	'mrkdwn_in': ["text"]
+        		    	'mrkdwn_in': ["text"],
+        		    	'fallback': message 
      			  	 }
 
 				pairings_bot.post_attachment(attachment)
@@ -223,7 +224,8 @@ def slackPairings(normalPairings,twoHeadedPairings, remainder):
 				attachment = {
       					'text': message,
        				    'color': "#7CD197",
-       				    'mrkdwn_in': ["text"]
+       				    'mrkdwn_in': ["text"],
+        		    	'fallback': message 
       				 }
 
 				pairings_bot.post_attachment(attachment)
@@ -239,7 +241,8 @@ def slackPairings(normalPairings,twoHeadedPairings, remainder):
 			attachment = {
       					'text': message,
        				    'color': "#7CD197",
-       				    'mrkdwn_in': ["text"]
+       				    'mrkdwn_in': ["text"],
+        		    	'fallback': message 
       				 }
 
 			pairings_bot.post_attachment(attachment)	
