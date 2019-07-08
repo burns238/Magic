@@ -11,10 +11,10 @@ class slack_bot:
 		self.default_message = {
 		'token': self.token,
 		'channel': channel_id,
+		'text': '',
 		'username': bot_name,
 		'icon_url': bot_icon,
-		'link_names':'1',
-		'text':''
+		'link_names':'1'
 		}
 		self.live = live
 		self.session = requests.session()
