@@ -52,19 +52,19 @@ class slack_bot:
 		attachment = {
 		'text': message_text
 		}
-		message['attachments'] = [attachment]
+		message['attachments'] = json.dumps([attachment])
 		self._send_or_simulate(message, 'simulating post of multi-line message: {!s}'.format(message_text))
 
 	def post_attachment(self, attachment):
 		message = self.default_message.copy()
 		attachment = attachment
-		message['attachments'] = [attachment]
+		message['attachments'] = json.dumps([attachment])
 		self._send_or_simulate(message, 'simulating post of multi-line message')
 
 	def _send_or_simulate(self, payload, simulate_text):
 		if self.live:
 			print(payload)
-			response = self.session.post("https://slack.com/api/chat.postMessage", params=json.dumps(payload))
+			response = self.session.post("https://slack.com/api/chat.postMessage", params=payload)
 			print(response.json())
 		else:
 			write_to_log(simulate_text)
