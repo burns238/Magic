@@ -44,7 +44,7 @@ class slack_bot:
 				}
 			message['attachments'].append(attachment)
 			attachment_count += 1
-		message['attachments'] = [attachment]
+		message['attachments'] = json.dumps([attachment])
 		self._send_or_simulate(message, 'simulating post of images: {!s}'.format(str(image_urls_array)))
 
 	def post_multiline_message(self, message_text):
