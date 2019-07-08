@@ -11,7 +11,7 @@ class slack_bot:
 		self.default_message = {
 		'token': self.token,
 		'channel': channel_id,
-		'text': '',
+		'text': '-',
 		'username': bot_name,
 		'icon_url': bot_icon,
 		'link_names':'1'
